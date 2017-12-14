@@ -31,8 +31,8 @@ public class MainListActivity extends AppCompatActivity implements ContactListAd
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainListActivity.this, AddEdit2Activity.class);
-                intent.putExtra("user_id", "0");
+                Intent intent = new Intent(MainListActivity.this, AddEditActivity.class);
+                intent.putExtra("user_id", "-1");
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class MainListActivity extends AppCompatActivity implements ContactListAd
     public void onUserItemClicked(Contact user) {
 //        Log.d(TAG, "onUserItemClicked: " + user.getDisplayName());
 
-        Intent intent = new Intent(this, AddEdit2Activity.class);
+        Intent intent = new Intent(this, AddEditActivity.class);
         intent.putExtra("user_id",  Integer.toString(user.getId()));
         startActivity(intent);
     }
