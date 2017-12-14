@@ -62,18 +62,13 @@
             android:layout_height="wrap_content"
             android:text="Major: "/>
 
-        <EditText
-            android:id="@+id/user_major"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="MAJOR"
-            android:text="TextView"
-            android:layout_weight="1"/>
 
         <Spinner
             android:id="@+id/user_major_spinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:spinnerMode="dialog">
 
         </Spinner>
     </LinearLayout>

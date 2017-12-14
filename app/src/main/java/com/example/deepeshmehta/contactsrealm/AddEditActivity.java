@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -13,19 +13,19 @@ import android.widget.TextView;
 
 import com.example.deepeshmehta.contactsrealm.models.Contact;
 
-import org.w3c.dom.Text;
-
 import io.realm.Realm;
 
 public class AddEditActivity extends AppCompatActivity {
 
     Contact current_contact;
-    TextView userName, userAge, userMajor;
+    TextView userName;
+    TextView userAge;
     SeekBar userAgeSeek;
     RadioGroup userGenderRadio;
     Spinner userMajorSpinner;
     int user_id;
     Button save;
+    private String[] spinner_data = {"IT","Physics","Math","Geog"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +76,15 @@ public class AddEditActivity extends AppCompatActivity {
             userGenderRadio.check(R.id.user_gender_female);
         }
 
-
-        userMajor = findViewById(R.id.user_major);
-        userMajor.setText(current_contact.getMajor());
-
         userMajorSpinner = findViewById(R.id.user_major_spinner);
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinner_data);
+        spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+
+
+        userMajorSpinner.setAdapter(spinnerArrayAdapter);
+        userMajorSpinner.setSelection(java.util.Arrays.asList(spinner_data).indexOf(current_contact.getMajor()),true);
 
         save = findViewById(R.id.save_button);
         save.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +94,9 @@ public class AddEditActivity extends AppCompatActivity {
 //                current_contact = Realm.getDefaultInstance().where(Contact.class).equalTo("id",user_id).findFirst();
                 current_contact.setName(String.valueOf(userName.getText()));
                 current_contact.setAge(Integer.parseInt(String.valueOf(userAge.getText())));
-                current_contact.setMajor(String.valueOf(userMajor.getText()));
+
+
+                current_contact.setMajor(spinner_data[userMajorSpinner.getSelectedItemPosition()]);
 
                 int gen;
                 switch (userGenderRadio.getCheckedRadioButtonId()){

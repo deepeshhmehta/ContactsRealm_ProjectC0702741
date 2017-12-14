@@ -12,12 +12,14 @@
         android:id="@+id/contact_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="4"/>
+        android:layout_weight="4"
+        android:text="Test"
+        android:textSize="26sp" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/delete_button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Delete"/>
+        android:text="Delete" />
 </LinearLayout>

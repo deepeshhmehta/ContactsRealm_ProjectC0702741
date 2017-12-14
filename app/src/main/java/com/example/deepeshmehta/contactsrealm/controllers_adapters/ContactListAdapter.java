@@ -2,6 +2,7 @@ package com.example.deepeshmehta.contactsrealm.controllers_adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +28,13 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     private Context context;
     private List<Contact> contacts;
     private OnUserItemClicked onUserItemClicked;
+    private ShowDeleteDialogueData showDeleteDialogueData;
 
-    public ContactListAdapter(Context context, RealmResults<Contact> contacts, OnUserItemClicked onUserItemClicked) {
+    public ContactListAdapter(Context context, RealmResults<Contact> contacts, OnUserItemClicked onUserItemClicked, ShowDeleteDialogueData showDeleteDialogueData) {
         this.context = context;
         this.contacts = contacts;
         this.onUserItemClicked = onUserItemClicked;
+        this.showDeleteDialogueData = showDeleteDialogueData;
     }
 
     @Override
@@ -53,12 +56,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                RealmResults<Contact> result = realm.where(Contact.class).equalTo("id",contacts.get(position).getId()).findAll();
-                result.deleteAllFromRealm();
-                realm.commitTransaction();
 
+                showDeleteDialogueData.showDeleteDialog(contacts.get(position));
                 contacts = Realm.getDefaultInstance().where(Contact.class).findAll();
                 notifyDataSetChanged();
             }
@@ -87,5 +86,9 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
     public interface OnUserItemClicked{
         void onUserItemClicked(Contact user);
+    }
+
+    public interface ShowDeleteDialogueData{
+        public void showDeleteDialog(Contact con) throws Resources.NotFoundException;
     }
 }
