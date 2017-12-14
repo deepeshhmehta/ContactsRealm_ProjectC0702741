@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.deepeshmehta.contactsrealm.AddEdit2Activity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NAME"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/user_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AGE"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/user_major"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="MAJOR"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/user_gender"
+        android:layout_width="match_parent"
+        android:hint="Gender"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+</LinearLayout>
