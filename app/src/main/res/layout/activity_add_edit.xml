@@ -6,33 +6,108 @@
     tools:context="com.example.deepeshmehta.contactsrealm.AddEditActivity"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/user_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="NAME"
-        android:text="TextView" />
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "/>
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="NAME"
+            android:layout_weight="1"/>
 
-    <EditText
-        android:id="@+id/user_age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="AGE"
-        android:text="TextView" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/user_major"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="MAJOR"
-        android:text="TextView" />
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age: "/>
 
-    <EditText
-        android:id="@+id/user_gender"
+            <TextView
+                android:id="@+id/user_age_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/user_age_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:hint="Gender"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Major: "/>
+
+        <EditText
+            android:id="@+id/user_major"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="MAJOR"
+            android:text="TextView"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/user_major_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: "/>
+
+        <RadioGroup
+            android:id="@+id/user_gender_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/user_gender_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"/>
+            <RadioButton
+                android:id="@+id/user_gender_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"/>
+        </RadioGroup>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/save_button"

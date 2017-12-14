@@ -15,7 +15,7 @@ public class Contact extends RealmObject {
     private String name;
     private int age;
     private String major;
-    private String gender;
+    private int gender;
 
     public Contact() {
 
@@ -23,10 +23,10 @@ public class Contact extends RealmObject {
         this.name = "";
         this.age = 20;
         this.major = "";
-        this.gender = "";
+        this.gender =  1;
     }
 
-    public Contact(String name, int age, String major, String gender) {
+    public Contact(String name, int age, String major, int gender) {
         this.id = getNextKey();
         this.name = name;
         this.age = age;
@@ -50,11 +50,11 @@ public class Contact extends RealmObject {
         this.id = id;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
