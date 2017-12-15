@@ -47,6 +47,9 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     public void onBindViewHolder(ContactListViewHolder holder, final int position) {
         holder.contact = contacts.get(position);
         holder.txtContactName.setText(holder.contact.getName());
+        holder.txtContactAge.setText(Integer.toString(holder.contact.getAge()));
+        holder.txtContactGender.setText(holder.contact.getGender() == 1? "Male": "Female");
+        holder.txtContactMajor.setText(holder.contact.getMajor());
         holder.txtContactName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,14 +75,18 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     }
 
     public class ContactListViewHolder extends RecyclerView.ViewHolder{
-        TextView txtContactName;
+        TextView txtContactName, txtContactAge, txtContactGender, txtContactMajor;
         Contact contact;
         Button delete_button;
 
+
         public ContactListViewHolder(View itemView) {
             super(itemView);
-             txtContactName = itemView.findViewById(R.id.contact_name);
-             delete_button = itemView.findViewById(R.id.delete_button);
+            txtContactName = itemView.findViewById(R.id.contact_name);
+            txtContactAge = itemView.findViewById(R.id.contact_age);
+            txtContactGender = itemView.findViewById(R.id.contact_gender);
+            txtContactMajor = itemView.findViewById(R.id.contact_major);
+            delete_button = itemView.findViewById(R.id.delete_button);
         }
     }
 
